@@ -3,24 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Metadata Generator Pro</title>
-    <!-- Fonts & Icons -->
+    <title>AI Metadata Generator VIP</title>
+    <!-- Google Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* ========== VIP CSS STYLES ========== */
+        /* ========== VIP DESIGN STYLES ========== */
         :root {
             --primary: #6366f1;
             --secondary: #ec4899;
-            --accent: #8b5cf6;
             --dark-bg: #0f172a;
             --card-bg: rgba(30, 41, 59, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --success: #10b981;
-            --error: #ef4444;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,10 +23,9 @@
         body {
             font-family: 'Outfit', 'Noto Sans Bengali', sans-serif;
             background-color: var(--dark-bg);
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                              radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                              radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -39,497 +33,301 @@
             padding: 20px;
         }
 
-        .container {
-            width: 100%;
-            max-width: 900px;
-            animation: fadeIn 0.8s ease-out;
-        }
+        .container { width: 100%; max-width: 850px; animation: fadeIn 0.8s ease-out; }
 
-        /* Glassmorphism Card */
+        /* Glass Card */
         .glass-card {
             background: var(--card-bg);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             padding: 40px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        /* Header */
-        header { text-align: center; margin-bottom: 40px; }
-        .badge {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin: 15px 0 10px;
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { 
+            font-size: 2.2rem; 
             background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
-        .subtitle { color: var(--text-muted); font-size: 1.1rem; }
+        
+        .badge {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
 
         /* Inputs */
-        .input-group { margin-bottom: 25px; position: relative; }
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        .input-group i { margin-right: 8px; color: var(--secondary); }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; color: #cbd5e1; font-weight: 600; }
         
-        input, select, textarea {
+        input, select {
             width: 100%;
             background: rgba(15, 23, 42, 0.6);
-            border: 2px solid var(--glass-border);
-            padding: 16px;
+            border: 2px solid rgba(255,255,255,0.1);
+            padding: 14px;
             border-radius: 12px;
             color: #fff;
             font-size: 1rem;
-            transition: all 0.3s ease;
             font-family: inherit;
         }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
-        }
-
-        /* Settings Toggle */
-        .settings-toggle {
-            cursor: pointer;
-            color: var(--secondary);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-        .api-section {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            border: 1px dashed var(--glass-border);
-        }
+        input:focus, select:focus { outline: none; border-color: var(--primary); }
 
         /* Button */
         .generate-btn {
             width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             border: none;
             border-radius: 12px;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
+            transition: transform 0.2s;
+            margin-top: 10px;
         }
-        .generate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
-        }
-        .generate-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+        .generate-btn:hover { transform: translateY(-2px); }
+        .generate-btn:disabled { opacity: 0.6; cursor: wait; }
 
-        /* Output Section */
+        /* Results */
         .output-section { margin-top: 40px; display: none; }
-        .output-card {
-            background: rgba(15, 23, 42, 0.5);
-            border-radius: 16px;
+        .result-box {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
-            border: 1px solid var(--glass-border);
-            position: relative;
-            overflow: hidden;
+            border-left: 4px solid var(--secondary);
         }
-        .output-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--secondary);
-        }
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .card-title { font-weight: 600; color: var(--secondary); display: flex; align-items: center; gap: 8px; }
-        
+        .box-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .box-title { color: var(--secondary); font-weight: bold; }
         .copy-btn {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             border: none;
             color: white;
-            padding: 8px 15px;
-            border-radius: 8px;
+            padding: 5px 12px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: 0.3s;
-            font-size: 0.85rem;
         }
         .copy-btn:hover { background: var(--primary); }
+        .content-text { color: #e2e8f0; line-height: 1.6; word-wrap: break-word; }
 
-        .result-text {
-            color: #cbd5e1;
-            line-height: 1.6;
-            font-family: 'Courier New', monospace;
-            word-wrap: break-word;
-        }
-
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: white;
-            color: #0f172a;
-            padding: 15px 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transform: translateY(100px);
-            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            z-index: 1000;
-            font-weight: 600;
-        }
-        .toast.show { transform: translateY(0); }
-        .toast.success i { color: var(--success); }
-        .toast.error i { color: var(--error); }
-
-        /* Spinner */
+        /* Loading & Error */
+        .loading { text-align: center; display: none; margin-top: 20px; }
         .spinner {
-            width: 24px;
-            height: 24px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s linear infinite;
-            display: none;
+            width: 30px; height: 30px; border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: var(--primary); border-radius: 50%;
+            animation: spin 1s linear infinite; margin: 0 auto;
         }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        .error-msg { 
+            color: #fca5a5; background: rgba(127, 29, 29, 0.5); 
+            padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; display: none;
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (max-width: 600px) {
-            .glass-card { padding: 25px; }
-            h1 { font-size: 1.8rem; }
-        }
-        
-        .hidden { display: none; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="glass-card">
-            <header>
-                <span class="badge">✨ VIP Version</span>
-                <h1>AI Metadata Gen</h1>
-                <p class="subtitle">Supercharge your SEO with AI Magic</p>
-            </header>
+<div class="container">
+    <div class="glass-card">
+        <header>
+            <span class="badge">PRO VERSION</span>
+            <h1>AI Metadata Generator</h1>
+            <p>Paste Title, Get SEO Magic ✨</p>
+        </header>
 
-            <main>
-                <!-- API Key Section (Toggleable) -->
-                <div class="settings-toggle" onclick="toggleSettings()">
-                    <i class="fas fa-cog"></i> API Settings (Click to Open)
-                </div>
-                
-                <div id="apiSettings" class="api-section hidden">
-                    <div class="input-group">
-                        <label for="aiProvider"><i class="fas fa-robot"></i> Choose AI Model</label>
-                        <select id="aiProvider" onchange="updatePlaceholder()">
-                            <option value="gemini">Google Gemini (Recommended - Free)</option>
-                            <option value="groq">Groq (Ultra Fast)</option>
-                            <option value="openai">OpenAI (Paid)</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="apiKey"><i class="fas fa-key"></i> Paste API Key Here</label>
-                        <input type="password" id="apiKey" placeholder="Enter Gemini API Key">
-                    </div>
-                    <small style="color: #94a3b8;">*Key is stored locally in your browser only.</small>
-                </div>
-
-                <!-- Main Inputs -->
-                <div class="input-group">
-                    <label for="topic"><i class="fas fa-search"></i> Page Topic *</label>
-                    <input type="text" id="topic" placeholder="e.g. Best Gaming Laptop 2025" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="keywords"><i class="fas fa-tags"></i> Keywords (Optional)</label>
-                    <input type="text" id="keywords" placeholder="laptop, gaming, rtx 4060">
-                </div>
-
-                <div class="input-group">
-                    <label for="language"><i class="fas fa-globe"></i> Language</label>
-                    <select id="language">
-                        <option value="english">English (US)</option>
-                        <option value="bangla">Bangla (বাংলা)</option>
-                        <option value="hinglish">Hinglish</option>
-                    </select>
-                </div>
-
-                <button id="generateBtn" class="generate-btn">
-                    <div class="spinner" id="loadingSpinner"></div>
-                    <span id="btnText"><i class="fas fa-magic"></i> Generate Magic</span>
-                </button>
-            </main>
-
-            <!-- Output Section -->
-            <div id="outputSection" class="output-section">
-                
-                <!-- SEO Title -->
-                <div class="output-card">
-                    <div class="card-header">
-                        <span class="card-title"><i class="fas fa-heading"></i> SEO Title</span>
-                        <button class="copy-btn" onclick="copyToClipboard('seoTitle')"><i class="fas fa-copy"></i> Copy</button>
-                    </div>
-                    <div id="seoTitle" class="result-text"></div>
-                </div>
-
-                <!-- Meta Description -->
-                <div class="output-card">
-                    <div class="card-header">
-                        <span class="card-title"><i class="fas fa-align-left"></i> Meta Description</span>
-                        <button class="copy-btn" onclick="copyToClipboard('metaDesc')"><i class="fas fa-copy"></i> Copy</button>
-                    </div>
-                    <div id="metaDesc" class="result-text"></div>
-                </div>
-
-                <!-- Keywords -->
-                <div class="output-card">
-                    <div class="card-header">
-                        <span class="card-title"><i class="fas fa-keyboard"></i> Meta Keywords</span>
-                        <button class="copy-btn" onclick="copyToClipboard('metaKeywords')"><i class="fas fa-copy"></i> Copy</button>
-                    </div>
-                    <div id="metaKeywords" class="result-text"></div>
-                </div>
-
+        <main>
+            <!-- Input Form -->
+            <div class="input-group">
+                <label>Topic / Page Title *</label>
+                <input type="text" id="topic" placeholder="e.g. Best Gaming Phones under 20000 BDT" required>
             </div>
 
-            <footer>
-                Made with <i class="fas fa-heart" style="color: var(--secondary)"></i> for SEO Experts
-            </footer>
-        </div>
+            <div class="input-group">
+                <label>Keywords (Optional)</label>
+                <input type="text" id="keywords" placeholder="gaming, pubg, battery life">
+            </div>
+
+            <div class="input-group">
+                <label>Language</label>
+                <select id="language">
+                    <option value="english">English (US)</option>
+                    <option value="bangla">বাংলা (Bangla)</option>
+                    <option value="hinglish">Hinglish</option>
+                </select>
+            </div>
+
+            <button id="generateBtn" class="generate-btn">✨ Generate Metadata</button>
+
+            <!-- Loading -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>AI is thinking...</p>
+            </div>
+
+            <!-- Error -->
+            <div id="error" class="error-msg"></div>
+
+            <!-- Output -->
+            <div id="outputSection" class="output-section">
+                
+                <div class="result-box">
+                    <div class="box-header">
+                        <span class="box-title">🏷️ SEO Title</span>
+                        <button class="copy-btn" onclick="copyText('seoTitle')">Copy</button>
+                    </div>
+                    <div id="seoTitle" class="content-text"></div>
+                </div>
+
+                <div class="result-box">
+                    <div class="box-header">
+                        <span class="box-title">📝 Meta Description</span>
+                        <button class="copy-btn" onclick="copyText('metaDesc')">Copy</button>
+                    </div>
+                    <div id="metaDesc" class="content-text"></div>
+                </div>
+
+                <div class="result-box">
+                    <div class="box-header">
+                        <span class="box-title">🔑 Keywords</span>
+                        <button class="copy-btn" onclick="copyText('metaKeywords')">Copy</button>
+                    </div>
+                    <div id="metaKeywords" class="content-text"></div>
+                </div>
+            </div>
+        </main>
     </div>
+</div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMsg">Success!</span>
-    </div>
+<script>
+    // ==========================================
+    // ⚠️ IMPORTANT: নিচেই তোমার API Key বসাও
+    // ==========================================
+    
+    const MY_API_KEY = "YOUR_API_KEY_HERE"; 
+    
+    // 👆 উপরের লাইনে "YOUR_API_KEY_HERE" কেটে তোমার AIza... Key টি পেস্ট করো।
+    // ==========================================
 
-    <script>
-        // API Configuration
-        const API_ENDPOINTS = {
-            gemini: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
-            groq: 'https://api.groq.com/openai/v1/chat/completions',
-            openai: 'https://api.openai.com/v1/chat/completions'
-        };
+    const generateBtn = document.getElementById('generateBtn');
+    const loadingDiv = document.getElementById('loading');
+    const errorDiv = document.getElementById('error');
+    const outputSection = document.getElementById('outputSection');
 
-        // Load saved API Key
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedKey = localStorage.getItem('ai_api_key');
-            if(savedKey) document.getElementById('apiKey').value = savedKey;
+    generateBtn.addEventListener('click', async () => {
+        const topic = document.getElementById('topic').value.trim();
+        const keywords = document.getElementById('keywords').value.trim();
+        const language = document.getElementById('language').value;
+
+        if (!topic) {
+            showError("Please enter a topic!");
+            return;
+        }
+
+        // Check if user replaced the placeholder
+        if (MY_API_KEY === "YOUR_API_KEY_HERE" || MY_API_KEY === "") {
+            showError("API Key বসানো হয়নি! index.html ফাইলটি এডিট করে 'MY_API_KEY' এর জায়গায় আপনার Key বসান।");
+            return;
+        }
+
+        showLoading(true);
+        hideError();
+        outputSection.style.display = 'none';
+
+        try {
+            // 1. Create Prompt
+            const prompt = createPrompt(topic, keywords, language);
+            
+            // 2. Call Gemini API
+            const result = await callGeminiAPI(prompt);
+            
+            // 3. Display Result
+            displayResult(result);
+
+        } catch (err) {
+            console.error(err);
+            showError(err.message);
+        } finally {
+            showLoading(false);
+        }
+    });
+
+    function createPrompt(topic, keywords, lang) {
+        let langInstruction = lang === 'bangla' ? 'Write in Bengali.' : 'Write in English.';
+        return `As an SEO Expert, generate metadata for:
+        Topic: ${topic}
+        Keywords: ${keywords}
+        ${langInstruction}
+        
+        Return ONLY valid JSON format:
+        {
+            "seoTitle": "Clickable title (max 60 chars)",
+            "metaDescription": "Engaging description (max 160 chars)",
+            "metaKeywords": "comma separated tags"
+        }`;
+    }
+
+    async function callGeminiAPI(prompt) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${MY_API_KEY}`;
+        
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }]
+            })
         });
 
-        function toggleSettings() {
-            document.getElementById('apiSettings').classList.toggle('hidden');
+        const data = await response.json();
+
+        if (!response.ok) {
+            const errorMsg = data.error?.message || "Unknown API Error";
+            throw new Error(`Google Error: ${errorMsg}`);
         }
 
-        function updatePlaceholder() {
-            const provider = document.getElementById('aiProvider').value;
-            const input = document.getElementById('apiKey');
-            input.placeholder = `Enter ${provider.charAt(0).toUpperCase() + provider.slice(1)} API Key`;
-        }
+        const text = data.candidates[0].content.parts[0].text;
+        
+        // Clean and Parse JSON
+        const jsonStr = text.replace(/```json|```/g, '').trim();
+        return JSON.parse(jsonStr);
+    }
 
-        // Main Logic
-        document.getElementById('generateBtn').addEventListener('click', async () => {
-            const topic = document.getElementById('topic').value.trim();
-            const apiKey = document.getElementById('apiKey').value.trim();
-            const provider = document.getElementById('aiProvider').value;
-            const language = document.getElementById('language').value;
-            const keywords = document.getElementById('keywords').value;
+    function displayResult(data) {
+        document.getElementById('seoTitle').innerText = data.seoTitle;
+        document.getElementById('metaDesc').innerText = data.metaDescription;
+        document.getElementById('metaKeywords').innerText = data.metaKeywords;
+        outputSection.style.display = 'block';
+    }
 
-            // Basic Validation
-            if (!topic) return showToast('Please enter a topic!', 'error');
-            if (!apiKey) {
-                toggleSettings();
-                return showToast('Please enter your API Key!', 'error');
-            }
+    function showLoading(show) {
+        loadingDiv.style.display = show ? 'block' : 'none';
+        generateBtn.disabled = show;
+        generateBtn.innerText = show ? 'Generating...' : '✨ Generate Metadata';
+    }
 
-            // Save Key
-            localStorage.setItem('ai_api_key', apiKey);
+    function showError(msg) {
+        errorDiv.innerText = msg;
+        errorDiv.style.display = 'block';
+    }
 
-            // UI Loading State
-            setLoading(true);
+    function hideError() {
+        errorDiv.style.display = 'none';
+    }
 
-            try {
-                const prompt = createPrompt(topic, keywords, language);
-                let result;
+    function copyText(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text);
+        alert("Copied!");
+    }
+</script>
 
-                if (provider === 'gemini') {
-                    result = await callGemini(prompt, apiKey);
-                } else if (provider === 'groq') {
-                    result = await callGroq(prompt, apiKey);
-                } else {
-                    result = await callOpenAI(prompt, apiKey);
-                }
-
-                displayResult(result);
-                showToast('Metadata Generated Successfully!', 'success');
-
-            } catch (error) {
-                console.error(error);
-                showToast(error.message || 'Something went wrong', 'error');
-            } finally {
-                setLoading(false);
-            }
-        });
-
-        // Prompt Creator
-        function createPrompt(topic, keywords, lang) {
-            let langText = lang === 'bangla' ? 'Bengali' : (lang === 'hinglish' ? 'Hinglish' : 'English');
-            
-            return `Act as an SEO Expert. 
-            Topic: "${topic}"
-            Keywords: "${keywords}"
-            Language: ${langText}
-
-            Generate JSON ONLY format:
-            {
-                "seoTitle": "Click-worthy title (max 60 chars)",
-                "metaDescription": "Engaging description (max 160 chars)",
-                "metaKeywords": "comma separated tags"
-            }
-            Do not include markdown or explanations. Just pure JSON.`;
-        }
-
-        // API Calls
-        async function callGemini(prompt, key) {
-            const res = await fetch(`${API_ENDPOINTS.gemini}?key=${key}`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: prompt }] }]
-                })
-            });
-            if(!res.ok) throw new Error('Gemini API Error. Check Key.');
-            const data = await res.json();
-            return parseJSON(data.candidates[0].content.parts[0].text);
-        }
-
-        async function callGroq(prompt, key) {
-            const res = await fetch(API_ENDPOINTS.groq, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${key}`
-                },
-                body: JSON.stringify({
-                    model: 'llama-3.1-8b-instant',
-                    messages: [{ role: 'user', content: prompt }]
-                })
-            });
-            if(!res.ok) throw new Error('Groq API Error. Check Key.');
-            const data = await res.json();
-            return parseJSON(data.choices[0].message.content);
-        }
-
-        async function callOpenAI(prompt, key) {
-            const res = await fetch(API_ENDPOINTS.openai, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${key}`
-                },
-                body: JSON.stringify({
-                    model: 'gpt-3.5-turbo',
-                    messages: [{ role: 'user', content: prompt }]
-                })
-            });
-            if(!res.ok) throw new Error('OpenAI Error. Check Key/Quota.');
-            const data = await res.json();
-            return parseJSON(data.choices[0].message.content);
-        }
-
-        // Helpers
-        function parseJSON(text) {
-            try {
-                return JSON.parse(text.replace(/```json|```/g, '').trim());
-            } catch (e) {
-                throw new Error('AI Response Formatting Error');
-            }
-        }
-
-        function displayResult(data) {
-            document.getElementById('seoTitle').innerText = data.seoTitle;
-            document.getElementById('metaDesc').innerText = data.metaDescription;
-            document.getElementById('metaKeywords').innerText = data.metaKeywords;
-            document.getElementById('outputSection').style.display = 'block';
-            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function setLoading(isLoading) {
-            const btn = document.getElementById('generateBtn');
-            const spinner = document.getElementById('loadingSpinner');
-            const text = document.getElementById('btnText');
-            
-            if (isLoading) {
-                btn.disabled = true;
-                spinner.style.display = 'block';
-                text.innerText = 'AI is thinking...';
-            } else {
-                btn.disabled = false;
-                spinner.style.display = 'none';
-                text.innerHTML = '<i class="fas fa-magic"></i> Generate Magic';
-            }
-        }
-
-        function showToast(msg, type) {
-            const toast = document.getElementById('toast');
-            const icon = toast.querySelector('i');
-            document.getElementById('toastMsg').innerText = msg;
-            
-            toast.className = `toast show ${type}`;
-            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
-
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        function copyToClipboard(elementId) {
-            const text = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                showToast('Copied to clipboard!', 'success');
-            });
-        }
-    </script>
 </body>
 </html>
