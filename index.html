@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Metadata Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>🚀 Free AI Metadata Generator</h1>
+            <p>SEO Title, Meta Description, Keywords - এক ক্লিকে!</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Input Section -->
+        <section class="input-section">
+            <h2>📝 তোমার তথ্য দাও</h2>
+            
+            <!-- Topic Input -->
+            <div class="input-group">
+                <label for="topic">পেজের বিষয় / Topic *</label>
+                <input 
+                    type="text" 
+                    id="topic" 
+                    placeholder="যেমন: Best smartphones under 20000 taka"
+                    required
+                >
+            </div>
+
+            <!-- Keywords Input -->
+            <div class="input-group">
+                <label for="keywords">Keywords (Optional)</label>
+                <input 
+                    type="text" 
+                    id="keywords" 
+                    placeholder="যেমন: smartphone, mobile, budget phone"
+                >
+            </div>
+
+            <!-- Language Select -->
+            <div class="input-group">
+                <label for="language">ভাষা / Language</label>
+                <select id="language">
+                    <option value="english">English</option>
+                    <option value="bangla">বাংলা</option>
+                    <option value="hinglish">Hinglish</option>
+                </select>
+            </div>
+
+            <!-- AI Provider Select -->
+            <div class="input-group">
+                <label for="aiProvider">AI Provider</label>
+                <select id="aiProvider">
+                    <option value="gemini">Google Gemini (Free)</option>
+                    <option value="groq">Groq (Fast + Free)</option>
+                    <option value="openai">OpenAI GPT</option>
+                </select>
+            </div>
+
+            <!-- Generate Button -->
+            <button id="generateBtn" class="generate-btn">
+                ✨ Generate Metadata
+            </button>
+
+            <!-- Loading Spinner -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>AI কাজ করছে...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error" class="error hidden"></div>
+        </section>
+
+        <!-- Output Section -->
+        <section id="outputSection" class="output-section hidden">
+            <h2>📋 Generated Metadata</h2>
+
+            <!-- SEO Title -->
+            <div class="output-box">
+                <div class="output-header">
+                    <span>🏷️ SEO Title</span>
+                    <button class="copy-btn" data-target="seoTitle">Copy</button>
+                </div>
+                <div id="seoTitle" class="output-content"></div>
+            </div>
+
+            <!-- Meta Description -->
+            <div class="output-box">
+                <div class="output-header">
+                    <span>📄 Meta Description</span>
+                    <button class="copy-btn" data-target="metaDesc">Copy</button>
+                </div>
+                <div id="metaDesc" class="output-content"></div>
+            </div>
+
+            <!-- Meta Keywords -->
+            <div class="output-box">
+                <div class="output-header">
+                    <span>🔑 Meta Keywords</span>
+                    <button class="copy-btn" data-target="metaKeywords">Copy</button>
+                </div>
+                <div id="metaKeywords" class="output-content"></div>
+            </div>
+
+            <!-- HTML Code -->
+            <div class="output-box">
+                <div class="output-header">
+                    <span>💻 Ready HTML Code</span>
+                    <button class="copy-btn" data-target="htmlCode">Copy</button>
+                </div>
+                <pre id="htmlCode" class="output-content code"></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Made with ❤️ | Free AI Metadata Generator</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
